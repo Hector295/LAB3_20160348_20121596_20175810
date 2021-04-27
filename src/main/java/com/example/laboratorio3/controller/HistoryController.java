@@ -1,14 +1,43 @@
 package com.example.laboratorio3.controller;
 
 
+import com.example.laboratorio3.entity.Employees;
+import com.example.laboratorio3.repository.HistoryRepository;
+//import jdk.internal.icu.text.NormalizerBase;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 //COMPLETAR
 @Controller
 @RequestMapping("/historial")
 public class HistoryController {
-//COMPLETAR
 
+    @Autowired
+    HistoryRepository historyRepository;
 
+    @GetMapping("/historial")
+    public String listarHistorial(Model model) {
+        List<Employees> employeesList = historyRepository.findAll();
+        model.addAttribute("listaHistorial", employeesList);
+
+        return "history/history";
+
+    }
+
+    @PostMapping("/buscar")
+    public String buscarTransportista(@RequestParam("campoBuscar") String searchField,
+                                      Model model){
+
+        List<Employees> listaEmployees = historyRepository.buscarEmpleado(searchField);
+        model.addAttribute("listarHistorial", listaEmployees);
+
+        return "history/history";
+    }
 }
