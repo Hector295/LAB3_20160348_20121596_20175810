@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- Nombre del fragment cabecera-->
+<head th:fragment="menuFragment(titulo)">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <table class="table table-sm">
+        <tr><a class="btn btn-primary mt-4 mb-4" th:href="@{'/empleado'}">Empleados</a></tr>
+        <tr><a class="btn btn-primary mt-4 mb-4" th:href="@{'/historial'}">Historial</a></tr>
+        <tr><a class="btn btn-primary mt-4 mb-4" th:href="@{'/reportes'}">Reporte visual</a></tr>
+
+    </table>
+    <title th:text="${titulo}">Título a reemplazar</title>
+    <script>var text = 0;</script>
+</head>
+
+</html>
