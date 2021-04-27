@@ -4,7 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
-public interface ReportesRepositoryDto {
+public interface ReportesRepositoryDto1 {
     String getFirst_name();
     String getLast_name();
     Date getHire_date();

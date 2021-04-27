@@ -1,7 +1,7 @@
 package com.example.laboratorio3.repository;
 
 
-import com.example.laboratorio3.dto.ReportesRepositoryDto;
+import com.example.laboratorio3.dto.ReportesRepositoryDto1;
 import com.example.laboratorio3.entity.Employees;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -18,6 +18,8 @@ public interface EmployeesRepository extends JpaRepository<Employees, Integer> {
             "inner join job_history jh on (e.employee_id=jh.employee_id)\n" +
             "inner join jobs j on (e.job_id=j.job_id)\n" +
             "where salary > 15000", nativeQuery = true)
-    List<ReportesRepositoryDto> obtenerReporte1();
+    List<ReportesRepositoryDto1> obtenerListaReporte1();
+
+
 
 }
