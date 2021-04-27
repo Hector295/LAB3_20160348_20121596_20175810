@@ -29,4 +29,7 @@ public interface EmployeesRepository extends JpaRepository<Employees, Integer> {
             "group by d.department_id) as q1 where cantidad > 3 group by city", nativeQuery = true)
     List<ReportesRepositoryDto2> obtenerListaReporte2();
 
+   // @Query(value="select*from ", nativeQuery = true)
+    //List<ReportesRepositoryDto3> obtenerListaReporte3();
+
 }

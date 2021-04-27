@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
 </head>
-<body>
+<body class="container">
+<div th:insert="fragments/menuFragment.html :: Reporte de departamento por país y ciudad"></div>
+<a class="btn btn-primary mt-4 mb-4" th:href="@{'/reportes'}">Regresar</a>
+
+<table class="table table-sm">
+    <tr>
+        <th>Pais</th>
+        <th>Ciudad</th>
+        <th>Cantidad</th>
+    </tr>
+
+    <tr th:each="registro2 : ${listaReporte2}">
+        <td th:text="${registro2.getCountry_name()}"></td>
+        <td th:text="${registro2.getCity()}"></td>
+        <td th:text="${registro2.getCantidad()}"></td>
+    </tr>
+</table>
 
 </body>
 </html>

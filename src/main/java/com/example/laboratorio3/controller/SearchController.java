@@ -33,7 +33,7 @@ public class SearchController {
 
     @GetMapping(value = {"/Reporte3"})
     public String verReporte3(Model model){
-        model.addAttribute("listaReporte3", employeesRepository.obtenerListaReporte3());
+        //model.addAttribute("listaReporte3", employeesRepository.obtenerListaReporte3());
         return "Search/reporte3";
     }
 
