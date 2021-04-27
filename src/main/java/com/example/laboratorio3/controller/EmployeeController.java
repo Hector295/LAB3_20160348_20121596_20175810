@@ -19,7 +19,9 @@ public class EmployeeController {
     //COMPLETAR
     @GetMapping(value={"/lista",""})
     public String listaEmployee(Model model){
-        List<Employees> lista = employeesRepository.findAll();
+        List<Employees> lista = employeesRepository.listarEmpleados();
+        model.addAttribute("lista",lista);
+        return "empleado/list";
     }
     @GetMapping("/nuevo")
     public String nuevoEmployeeForm( ) {
