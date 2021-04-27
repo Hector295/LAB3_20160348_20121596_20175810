@@ -23,7 +23,7 @@ public class EmployeeController {
         model.addAttribute("lista",lista);
         return "empleado/list";
     }
-    @GetMapping("/nuevo")
+    /*@GetMapping("/nuevo")
     public String nuevoEmployeeForm( ) {
         //COMPLETAR
     }
@@ -46,5 +46,5 @@ public class EmployeeController {
     }
 
     //COMPLETAR
-
+*/
 }
