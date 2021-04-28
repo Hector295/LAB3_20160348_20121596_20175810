@@ -14,7 +14,7 @@ import java.util.List;
 @Repository
 public interface EmployeesRepository extends JpaRepository<Employees, String> {
 
-    @Query(value = "select employees.first_name as Nombre, employees.last_name as Apellido, jobs.job_title as Puesto, departments.department_name as Departamento, locations.city as Ciudad, employees.email as Correo\n" +
+    @Query(value = "select employees.first_name, employees.last_name, jobs.job_title as Puesto, departments.department_name, locations.city, employees.email\n" +
             "from (((employees\n" +
             "inner join jobs on employees.job_id = jobs.job_id)\n" +
             "inner join departments on employees.department_id = departments.department_id)\n" +
