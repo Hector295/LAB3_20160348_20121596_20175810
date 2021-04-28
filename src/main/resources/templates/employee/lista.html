@@ -10,25 +10,19 @@
     </head>
     <body>
         <div class="container">
-            <div th:insert="fragments/menuFragment.html :: Lista de Empleados"></div>
+            <!-- <div th:insert="fragments/menuFragment.html :: Lista de Empleados"></div> -->
             <h1>Lista de Empleados</h1>
             <a class="btn btn-primary mt-4 mb-4" th:href="@{'/empleado/nuevo'}">Nuevo Empleado</a>
             <!-- COMPLETAR -->
-            <form class="input-group mb-lg-3" method="post" th:action="@{}">                <!-- COMPLETAR -->
-                <!-- COMPLETAR -->
-                <div class="input-group-append">
-                    <!-- COMPLETAR -->
-                </div>
-            </form>
+
             <div th:if="${mensajes != null}" th:text="${mensajes}" class="alert alert-success" role="alert"></div>
             <div th:if="${mensaje1 != null}" th:text="${mensaje1}" class="alert alert-warning" role="alert"></div>
             <div th:if="${mensaje2 != null}" th:text="${mensaje2}" class="alert alert-danger" role="alert"></div>
 
             <!-- COMPLETAR -->
             <!-- COMPLETAR -->
-            <table class="table table-sm" th:if="${}">
-                <thead>
-                    <tr>
+            <table class="table table-sm" >
+                <tr>
                         <th>#</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
@@ -37,9 +31,9 @@
                         <th>Ciudad</th>
                         <th></th>
                         <th></th>
-                    </tr>
-                </thead>
-                <tbody>
+                </tr>
+
+
                     <tr th:each="empleado, a : ${listaEmpleados}">
                         <td th:text="${a.index + 1}"></td>
                         <td th:text="${empleado.first_name}"></td>
@@ -54,7 +48,7 @@
                                th:href="@{'/empleado/eliminar' + '?correo=' + ${empleado.correo}}">Borrar</a>
                         </td>
                     </tr>
-                </tbody>
+
             </table>
         </div>
     </body>
