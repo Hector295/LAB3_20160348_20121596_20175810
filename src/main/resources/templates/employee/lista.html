@@ -1,34 +1,59 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
         <title>Lista de Empleados</title>
-</head>
-<body>
-    <div class="container">
-        <h1>Lista de Empleados</h1>
-        <a class="btn btn-primary mt-4 mb-4" th:href="@{}"></a>                 <!-- COMPLETAR -->
-        <form class="input-group mb-lg-3" method="post" th:action="@{}">                <!-- COMPLETAR -->
+    </head>
+    <body>
+        <div class="container">
+            <div th:insert="fragments/menuFragment.html :: Lista de empleados"></div>
+            <h1>Lista de Empleados</h1>
+            <a class="btn btn-primary mt-4 mb-4" th:href="@{'/empleado/nuevo'}">Nuevo Empleado</a>
             <!-- COMPLETAR -->
-            <div class="input-group-append">
+            <form class="input-group mb-lg-3" method="post" th:action="@{}">                <!-- COMPLETAR -->
                 <!-- COMPLETAR -->
-            </div>
-        </form>
+                <div class="input-group-append">
+                    <!-- COMPLETAR -->
+                </div>
+            </form>
+            <div th:if="${mensajes != null}" th:text="${mensajes}" class="alert alert-success" role="alert"></div>
+            <div th:if="${mensaje1 != null}" th:text="${mensaje1}" class="alert alert-warning" role="alert"></div>
+            <div th:if="${mensaje2 != null}" th:text="${mensaje2}" class="alert alert-danger" role="alert"></div>
 
-        <!-- COMPLETAR -->
-        <!-- COMPLETAR -->
+            <!-- COMPLETAR -->
+            <!-- COMPLETAR -->
             <table class="table table-sm" th:if="${}">
                 <thead>
-                <tr>
-                    <!-- COMPLETAR -->
-                </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Puesto</th>
+                        <th>Departamento</th>
+                        <th>Ciudad</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
                 </thead>
                 <tbody>
-                <!-- COMPLETAR -->
+                    <tr th:each="empleado, a : ${listaEmpleados}">
+                        <td th:text="${a.index + 1}"></td>
+                        <td th:text="${empleado.first_name}"></td>
+                        <td th:text="${empleado.last_name}"></td>
+                        <td th:text="${empleado.job_title}"></td>
+                        <td th:text="${empleado.department_name}"></td>
+                        <td th:text="${empleado.city}"></td>
+                        <td><a class="btn btn-primary"
+                               th:href="@{'/empleado/editar' + '?correo=' + ${empleado.correo}}">Editar</a>
+                        </td>
+                        <td><a class="btn btn-danger"
+                               th:href="@{'/empleado/eliminar' + '?correo=' + ${empleado.correo}}">Borrar</a>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>

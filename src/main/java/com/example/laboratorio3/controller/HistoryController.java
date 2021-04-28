@@ -24,20 +24,10 @@ public class HistoryController {
 
     @GetMapping("/historial")
     public String listarHistorial(Model model) {
-        List<Employees> employeesList = historyRepository.findAll();
+        List<Employees> employeesList = historyRepository.historialEmpleado();
         model.addAttribute("listaHistorial", employeesList);
 
         return "history/history";
 
-    }
-
-    @PostMapping("/buscar")
-    public String buscarTransportista(@RequestParam("campoBuscar") String searchField,
-                                      Model model){
-
-        List<Employees> listaEmployees = historyRepository.buscarEmpleado(searchField);
-        model.addAttribute("listarHistorial", listaEmployees);
-
-        return "history/history";
     }
 }

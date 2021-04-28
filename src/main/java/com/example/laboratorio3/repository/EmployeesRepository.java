@@ -1,6 +1,7 @@
 package com.example.laboratorio3.repository;
 
 
+import com.example.laboratorio3.dto.EmployeeRepositoryDto;
 import com.example.laboratorio3.dto.ReportesRepositoryDto1;
 import com.example.laboratorio3.dto.ReportesRepositoryDto2;
 import com.example.laboratorio3.entity.Employees;
@@ -12,7 +13,15 @@ import java.util.List;
 
 
 @Repository
-public interface EmployeesRepository extends JpaRepository<Employees, Integer> {
+public interface EmployeesRepository extends JpaRepository<Employees, String> {
+
+    @Query(value = "select employees.first_name as Nombre, employees.last_name as Apellido, jobs.job_title as Puesto, departments.department_name as Departamento, locations.city as Ciudad, employees.email as Correo\n" +
+            "from (((employees\n" +
+            "inner join jobs on employees.job_id = jobs.job_id)\n" +
+            "inner join departments on employees.department_id = departments.department_id)\n" +
+            "inner join locations on departments.location_id = locations.location_id)", nativeQuery = true)
+
+    List<EmployeeRepositoryDto> listarEmpleados();
 
     @Query(value = "select e.first_name, e.last_name, e.hire_date, jh.end_date, j.job_title\n" +
             "from employees e\n" +

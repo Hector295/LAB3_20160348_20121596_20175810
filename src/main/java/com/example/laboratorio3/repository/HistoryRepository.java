@@ -17,7 +17,7 @@ public interface HistoryRepository extends JpaRepository<Employees, Integer> {
             "inner join jobs on (employees.job_id = jobs.job_id)\n" +
             "inner join departments on (employees.department_id = departments.department_id)\n" +
             "inner join job_history on (employees.employee_id = job_history.employee_id)", nativeQuery = true)
-    List<Employees> buscarEmpleado(String nombre);
+    List<Employees> historialEmpleado();
 
 
 }
