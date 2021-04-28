@@ -87,11 +87,14 @@ public class EmployeeController {
 
     @GetMapping("/eliminar")
     public String borrarEmpleado(@RequestParam("correo") String correo, RedirectAttributes attributes) {
-        Optional<Employees> optionalEmployees=employeesRepository.findById(correo);
-        if(optionalEmployees.isPresent()){
-            employeesRepository.deleteById(correo);
-            attributes.addFlashAttribute("mensaje2","Empleado borrado exitosamente");
+        List<Employees> optionalEmployees=employeesRepository.findByEmail(correo);
+        Employees e = optionalEmployees.get(0);
+        if(optionalEmployees.isEmpty()){
+            return "redirect:/empleado";
+
         }
+        employeesRepository.deleteById(correo);
+        attributes.addFlashAttribute("mensaje2","Empleado borrado exitosamente");
         return "redirect:/empleado";
     }
 
