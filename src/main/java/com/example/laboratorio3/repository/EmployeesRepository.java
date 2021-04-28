@@ -14,12 +14,14 @@ import java.util.List;
 @Repository
 public interface EmployeesRepository extends JpaRepository<Employees, String> {
 
-    @Query(value = "select employees.first_name, employees.last_name, jobs.job_title as Puesto, departments.department_name, locations.city, employees.email\n" +
+    @Query(value = "select employees.first_name, employees.last_name, jobs.job_title, departments.department_name, locations.city, employees.email\n" +
             "from (((employees\n" +
             "inner join jobs on employees.job_id = jobs.job_id)\n" +
             "inner join departments on employees.department_id = departments.department_id)\n" +
             "inner join locations on departments.location_id = locations.location_id)", nativeQuery = true)
     List<EmployeeRepositoryDto> listarEmpleados();
+
+    List<Employees> findByEmail(String email);
 
     @Query(value = "select e.first_name, e.last_name, e.hire_date, jh.end_date, j.job_title\n" +
             "from employees e\n" +

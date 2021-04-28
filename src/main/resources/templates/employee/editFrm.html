@@ -9,7 +9,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
 </head>
 <body class="container">
-    <div th:insert="fragments/menuFragment.html :: Editar Empleado"></div>
+<!-- <div th:insert="fragments/menuFragment.html :: Nuevo Empleado"></div> -->
+
     <h2>Editar Empleado</h2><hr />
         <form method="post" th:action="@{'/empleado/editar'}" th:object="${empleado}">
             <!-- COMPLETAR -->
@@ -17,11 +18,11 @@
             <div class="row">
                 <div class="form-group col-6">
                     <label class="form-label">Nombre</label>
-                    <input th:field="*{firstName}"  type="text" class="form-control" />
+                    <input th:field="*{first_name}"  type="text" class="form-control" />
                 </div>
                 <div class="form-group col-6">
                     <label class="form-label">Apellido</label>
-                    <input th:field="*{lastName}"  type="text" class="form-control" />
+                    <input th:field="*{last_name}"  type="text" class="form-control" />
                 </div>
             </div>
 
@@ -33,7 +34,7 @@
             <div class="row">
                 <div class="form-group col-6">
                     <label class="form-label">Puesto</label>
-                    <select class="form-control" th:field="*{jobId}">
+                    <select class="form-control" th:field="*{job_id}">
                         <option th:each="puesto : ${listaPuestos}" th:value="${puesto.jobId}"
                                 th:text="${puesto.jobTitle}"
                         ></option>
@@ -48,9 +49,9 @@
             <div class="row">
                 <div class="form-group col-6">
                     <label class="form-label">Jefe</label>
-                    <select class="form-control" th:field="*{managerId}">
-                        <option th:each="jefe : ${listaJefes}" th:value="${jefe.managerId}"
-                                th:text="${jefe.firstName+' '+jefe.lastName}"></option>
+                    <select class="form-control" th:field="*{manager_id}">
+                        <option th:each="jefe : ${listaJefes}" th:value="${jefe.manager_id}"
+                                th:text="${jefe.first_name+' '+jefe.last_name}"></option>
                     </select>
                 </div>
                 <div class="form-group col-6">

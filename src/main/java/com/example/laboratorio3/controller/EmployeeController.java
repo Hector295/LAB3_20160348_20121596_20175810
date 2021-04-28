@@ -69,19 +69,19 @@ public class EmployeeController {
 
     @GetMapping("/editar")
     public String editarEmployee(Model model, @RequestParam("correo") String correo) {
-        Optional<Employees> optionalEmployees=employeesRepository.findById(correo);
+        List<Employees> lista=employeesRepository.findByEmail(correo);
         List<Jobs> listaPuestos = jobsRepository.findAll();
         model.addAttribute("listaPuestos", listaPuestos);
         List<Employees> listaJefes = bossesRepository.findAll();
         model.addAttribute("listaJefes", listaJefes);
         List<Departments> listaDepartamentos = departmentsRepository.findAll();
         model.addAttribute("listaDepartamentos", listaDepartamentos);
-        if(optionalEmployees.isPresent()){
-            Employees employees = optionalEmployees.get();
-            model.addAttribute("empleado",employees);
-            return "employee/editFrm";
-        }else {
+        if(lista.isEmpty()){
             return "redirect:/empleado";
+        }else {
+            Employees e = lista.get(0);
+            model.addAttribute("empleado",e);
+            return "employee/editFrm";
         }
     }
 

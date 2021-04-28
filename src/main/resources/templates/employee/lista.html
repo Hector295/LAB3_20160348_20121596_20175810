@@ -42,10 +42,10 @@
                         <td th:text="${empleado.department_name}"></td>
                         <td th:text="${empleado.city}"></td>
                         <td><a class="btn btn-primary"
-                               th:href="@{'/empleado/editar' + '?correo=' + ${empleado.correo}}">Editar</a>
+                               th:href="@{'/empleado/editar' + '?correo=' + ${empleado.getEmail()}}">Editar</a>
                         </td>
                         <td><a class="btn btn-danger"
-                               th:href="@{'/empleado/eliminar' + '?correo=' + ${empleado.correo}}">Borrar</a>
+                               th:href="@{'/empleado/eliminar' + '?correo=' + ${empleado.getEmail()}}">Borrar</a>
                         </td>
                     </tr>
 

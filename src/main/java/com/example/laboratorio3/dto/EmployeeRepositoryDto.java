@@ -8,6 +8,6 @@ public interface EmployeeRepositoryDto {
     String getJob_title();
     String getDepartment_name();
     String getCity();
-    String getCorreo();
+    String getEmail();
 
 }
