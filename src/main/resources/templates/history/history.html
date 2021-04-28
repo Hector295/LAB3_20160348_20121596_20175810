@@ -10,9 +10,10 @@
     </head>
     <body>
         <div class="container">
+            <div th:insert="fragments/menuFragment.html :: Historial de Empleados"></div>
             <h1>Historial de Empleados</h1>
             <form class="input-group mb-lg-3" method="post" th:action="@{}">                <!-- COMPLETAR -->
-                <input type="text" class="form-control" name="productname" id="productname" placeholder="Texto a buscar">
+                <input type="text" class="form-control" name="buscar" id="buscar" placeholder="Texto a buscar">
                 <div class="input-group-append">
                     <a class="btn btn-danger">Buscar</a>
                     <a class="btn btn-primary">Limpiar</a>
@@ -21,7 +22,7 @@
 
             <!-- COMPLETAR -->
             <!-- COMPLETAR -->
-            <table class="table table-sm" th:if="${}">
+            <table class="table table-sm">
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -32,15 +33,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="employee, info : ${listaHistorial}">
-                        <td th:text="${info.index + 1}"></td>
-                        <td th:text="${employee.getFirstName()}"></td>
-                        <td th:text="${employee.getLastName()}"></td>
-                        <td th:text="${employee.getJobId()}"></td>
-                        <td th:text="${employee.getDepartmentId()}"></td>
-                        <td th:text="${employee.getHireDate()}"></td>
-                        <td th:text="${employee.getLastName()}"></td>
-                    <!-- COMPLETAR -->
+                    <tr th:each="employee : ${listaHistorial}">
+                        <td th:text="${employee.first_name}"></td>
+                        <td th:text="${employee.last_name}"></td>
+                        <td th:text="${employee.job_title}"></td>
+                        <td th:text="${employee.department}"></td>
+                        <td th:text="${employee.hire_date}"></td>
                 </tbody>
             </table>
         </div>

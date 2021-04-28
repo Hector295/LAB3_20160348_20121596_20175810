@@ -22,10 +22,9 @@ public class HistoryController {
     @Autowired
     HistoryRepository historyRepository;
 
-    @GetMapping("/historial")
+    @GetMapping("/listar")
     public String listarHistorial(Model model) {
-        List<Employees> employeesList = historyRepository.historialEmpleado();
-        model.addAttribute("listaHistorial", employeesList);
+        model.addAttribute("listaHistorial", historyRepository.historialEmpleado());
 
         return "history/history";
 
